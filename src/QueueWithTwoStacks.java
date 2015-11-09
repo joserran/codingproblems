@@ -5,14 +5,11 @@ import java.util.*;
 
 public class QueueWithTwoStacks<E>
 {
-
     /**
      *	Implementing a queue with 2 stacks.
      */
-
     private Stack<E> primary = new Stack<E>();
     private Stack<E> tmp = new Stack<E>();
-
 
     public QueueWithTwoStacks()
     {
@@ -31,7 +28,7 @@ public class QueueWithTwoStacks<E>
         {
             return primary.pop();
         }
-        else if(primary.size() == 0)
+        else if(primary.size() == 0)//if you do not account for no elements in Queue program will through exception
         {
             return null;
         }
@@ -39,7 +36,7 @@ public class QueueWithTwoStacks<E>
         {
             System.out.println(primary.size());
             E returnElement = popToTmp(primary.size());
-            pushBack(tmp.size());
+            pushBackToPrimary(tmp.size());
             System.out.println(primary);
             return returnElement;
         }
@@ -54,15 +51,17 @@ public class QueueWithTwoStacks<E>
         return primary.pop();
     }
 
-    public void pushBack(int num)
+    public void pushBackToPrimary(int num)
     {
         for(int i = 0; i < num; i++)
         {
             primary.push(tmp.pop());
         }
     }
+
     public static void main(String[] args)
     {
+        //Testing
         QueueWithTwoStacks<Integer> queue = new QueueWithTwoStacks<>();
         System.out.println(queue.enqueue(1));
         System.out.println(queue.enqueue(2));
@@ -73,10 +72,7 @@ public class QueueWithTwoStacks<E>
         System.out.println(queue.dequeue());
         System.out.println(queue.dequeue());
         System.out.println(queue.dequeue());
-
         System.out.println(queue.dequeue());
         System.out.println(queue.dequeue());
-
-
     }
 }
