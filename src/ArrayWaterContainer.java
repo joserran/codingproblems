@@ -20,7 +20,7 @@ public class ArrayWaterContainer
         int[] arr = {1, 3, 3, 7, 2, 9};
         int[] arr2 = {1, 3, 0, 0, 2, 9};
         int[] arr3 = {1, 3, 0, 7, 2, 9};
-        int[] arr4 = {9, 0, 0, 0, 0, 9};
+        int[] arr4 = {9, 0, 0, 0, 0, 0};
         int waterAmount = countTotalWaterLevelNoZero(arr4);
         System.out.print(waterAmount + ", ");
         int waterAmountWithZero = countTotalWaterLevelNoZerowithZero(arr4);
@@ -60,10 +60,14 @@ public class ArrayWaterContainer
     public static int findNextNonZeroElementMethod(int[] arr, int index)
     {
         int counter = 0;
-        while(arr[index] == 0)
+        while(arr[index] == 0) //&& index <= arr.length - 1)
         {
             counter++;
             index++;
+            if(arr.length - 1 == index)// for arrays with {9, 0, 0, 0, 0, 0} case, all elements after first are 0.
+            {
+                return index;
+            }
         }
         return index;
     }
