@@ -9,7 +9,7 @@ public class BalancedDelimiter
 {
     public static void main(String[] args)
     {
-        System.out.println(isBalanced("{([])}"));
+        System.out.println(isBalanced("{([()])}"));
     }
 
     /*
@@ -25,8 +25,7 @@ public class BalancedDelimiter
         for(int i = 0; i < str.length(); i++)
         {
             if(map.containsValue(str.charAt(i)))
-                //add to stack
-                stack.add(str.charAt(i));
+                stack.add(str.charAt(i));//add to stack
             else if(map.containsKey(str.charAt(i)))
             {
                 //check to see if the char is compatible with value pair.
@@ -35,10 +34,9 @@ public class BalancedDelimiter
                 else
                     return false;
             }
+            else
+                return false;
         }
-        if(!stack.empty())
-            return false;
-        else
-            return true;
+        return (stack.empty());
     }
 }
